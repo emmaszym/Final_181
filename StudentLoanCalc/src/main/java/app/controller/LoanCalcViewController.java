@@ -247,8 +247,14 @@ public class LoanCalcViewController implements Initializable {
 		stackedBarChart.getChildren().clear();
 		
 		lblInterestSaved.setText("");
+		lblTotalPayemnts.setText("");
+		lblTotalInterest.setText("");
+		lblTotalEscrow.setText("");
+		lblPaymentsSaved.setText("");
+		lblMonthlyPayment.setText("");
 		
-		//TODO: The line above shows you how to clear lblInterestSaved.  Clear the rest of the calculated fields
+		
+		
 
 	}
 
@@ -264,8 +270,7 @@ public class LoanCalcViewController implements Initializable {
 			goodtogo = false;
 		}
 		
-		//TODO: The line above validates LoanAmount.  To fail validation, add to 'contentText' and set 'goodtoGo' to false
-		// 	add the following validaitons:
+		
 		
 
 		if((Double.parseDouble(InterestRate.getText())<0)||(Double.parseDouble(InterestRate.getText())>20)) {
