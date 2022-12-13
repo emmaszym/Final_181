@@ -2,6 +2,7 @@ package pkgLogic;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.poi.ss.formula.functions.FinanceLib;
 
@@ -14,14 +15,20 @@ public class Loan {
 	private LocalDate StartDate;
 	private double AdditionalPayment;
 	private double Escrow;
+	
+	private HashMap<Integer,Double> hmRates= new HashMap<Integer,Double>();
 
 	private ArrayList<Payment> loanPayments = new ArrayList<Payment>();
 
 	public Loan(double loanAmount, double interestRate, int loanPaymentCnt, LocalDate startDate,
 			double additionalPayment, double escrow) {
 		super();
+		
+		for(int i=1; i<=loanPaymentCnt;i++) {
+			hmRates.put(i, interestRate);
+		}
+		
 		LoanAmount = loanAmount;
-		InterestRate = interestRate;
 		LoanPaymentCnt = loanPaymentCnt * 12;
 		StartDate = startDate;
 		AdditionalPayment = additionalPayment;
@@ -31,7 +38,11 @@ public class Loan {
 
 		double RemainingBalance = LoanAmount;
 		int PaymentCnt = 1;
-		
+		while(RemainingBalance >= this.GetPMT()+this.AdditionalPayment) {
+			InterestRate=this.getInterestRate(PaymentCnt);
+			Payment payment=new Payment(RemainingBalance, PaymentCnt++, startDate);
+			
+		}
 		//TODO: Create a payment until 'remaining balance' is < PMT + Additional Payment
 		//		Hint: use while loop
 
@@ -82,8 +93,8 @@ public class Loan {
 		LoanBalanceEnd = loanBalanceEnd;
 	}
 
-	public double getInterestRate() {
-		return InterestRate;
+	public double getInterestRate(int PaymentCnt) {
+		return hmRates.get(PaymentCnt);
 	}
 
 	public void setInterestRate(double interestRate) {
