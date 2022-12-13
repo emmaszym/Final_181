@@ -151,13 +151,12 @@ public class LoanCalcViewController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		//TODO: This is for you... so you don't have to type in values over and over.  
-		//	Uncomment the next three lines to set these default values
-		/*		
+	
+				
 		LoanAmount.setText("75000");
 		InterestRate.setText("6.58");
 		NbrOfYears.setText("20");
-		*/
+		
 		cmbLoanType.getItems().addAll("Home", "Auto", "School");
 
 		cmbLoanType.getSelectionModel().selectFirst();
