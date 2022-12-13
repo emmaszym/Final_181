@@ -51,7 +51,7 @@ public class Loan {
 		
 	
 
-		//TODO: Create final payment (last payment might be partial payment)
+		
 	}
 
 	public double GetPMT() {
@@ -104,9 +104,13 @@ public class Loan {
 		LoanBalanceEnd = loanBalanceEnd;
 	}
 
-	public double getInterestRate(int PaymentCnt) {
-		return hmRates.get(PaymentCnt);
+	public double getInterestRate() {
+		return InterestRate;
 	}
+	
+//	public double getInterestRate(int PaymentCnt) {
+//		return hmRates.get(PaymentCnt);
+//	}
 
 	public void setInterestRate(double interestRate) {
 		InterestRate = interestRate;
