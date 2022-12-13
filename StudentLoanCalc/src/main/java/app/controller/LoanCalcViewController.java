@@ -267,13 +267,34 @@ public class LoanCalcViewController implements Initializable {
 		//TODO: The line above validates LoanAmount.  To fail validation, add to 'contentText' and set 'goodtoGo' to false
 		// 	add the following validaitons:
 		
-		//TODO: Validate InterestRate is between 0 and 20.  Make sure there's no alpha characters.
 
-		//TODO: Validate NbrOfYears is > 0
+		if((Double.parseDouble(InterestRate.getText())<0)||(Double.parseDouble(InterestRate.getText())>20)) {
+			contentText.append("Interest Rate must be between 0 and 20. \n");
+			goodtogo = false;
+		}
+		for(int i=0; i<InterestRate.getText().length(); i++) {
+			if(Character.isLetter(InterestRate.getText().charAt(i))) {
+				contentText.append("Interest Rate cannot contain letters. \n");
+				goodtogo=false;
+			}
+		}
+
 		
-		//TODO: Validate EscrowAmount >= 0
+		if(Integer.parseInt(NbrOfYears.getText())<= 0) {
+			contentText.append("Number of Years must be greater than 0. \n");
+			goodtogo=false;
+		}
 		
-		//TODO: Validate AdditionalPayemnt >= 0
+		if(Double.parseDouble(EscrowAmount.getText())<0) {
+			contentText.append("Escrow Amount must be greater than or equal to zero. \n");
+			goodtogo=false;
+		}
+		
+		
+		if(Double.parseDouble(AdditionalPayment.getText())<0) {
+			contentText.append("Additional Payment must be greater than or equal to 0. \n");
+			goodtogo=false;
+		}
 		
 		if (!goodtogo) {
 			Alert fail = new Alert(AlertType.ERROR);
