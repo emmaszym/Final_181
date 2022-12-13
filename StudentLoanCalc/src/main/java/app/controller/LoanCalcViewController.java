@@ -92,6 +92,15 @@ public class LoanCalcViewController implements Initializable {
 	
 	@FXML
 	private Label lblTotalEscrow;
+	
+	@FXML
+	private TextField txtAdjustLength;
+	
+	@FXML
+	private TextField txtAdjustPeriod;
+	
+	@FXML
+	private TextField txtAdjustRateMax;
 
 	@FXML
 	private TableView<Payment> tvResults;
@@ -209,6 +218,14 @@ public class LoanCalcViewController implements Initializable {
 		lblEscrow.setVisible((strLoanType == "Home"));
 	}
 
+	@FXML
+	private void btnSetDefaultAdjustments(KeyEvent event) {
+		this.txtAdjustLength.setText(NbrOfYears.getText());
+		this.txtAdjustPeriod.setText("");
+		this.txtAdjustRateMax.setText("");
+		btnClearResultsKeyPress(event);
+	}
+	
 	@FXML
 	private void btnClearResultsKeyPress(KeyEvent event) {
 		this.btnClearResults(null);
