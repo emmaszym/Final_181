@@ -223,6 +223,7 @@ public class LoanCalcViewController implements Initializable {
 		this.txtAdjustPeriod.setText("");
 		this.txtAdjustRateMax.setText("");
 		btnClearResultsKeyPress(event);
+		
 	}
 	
 	@FXML
@@ -272,7 +273,7 @@ public class LoanCalcViewController implements Initializable {
 		
 		
 
-		if((Double.parseDouble(InterestRate.getText())<0)||(Double.parseDouble(InterestRate.getText())>20)) {
+		if((Double.parseDouble(InterestRate.getText().trim())<0)||(Double.parseDouble(InterestRate.getText().trim())>20)) {
 			contentText.append("Interest Rate must be between 0 and 20. \n");
 			goodtogo = false;
 		}
@@ -284,18 +285,18 @@ public class LoanCalcViewController implements Initializable {
 		}
 
 		
-		if(Integer.parseInt(NbrOfYears.getText())<= 0) {
+		if(Integer.parseInt(NbrOfYears.getText().trim())<= 0) {
 			contentText.append("Number of Years must be greater than 0. \n");
 			goodtogo=false;
 		}
 		
-		if(Double.parseDouble(EscrowAmount.getText())<0) {
+		if(Double.parseDouble(EscrowAmount.getText().trim())<0) {
 			contentText.append("Escrow Amount must be greater than or equal to zero. \n");
 			goodtogo=false;
 		}
 		
 		
-		if(Double.parseDouble(AdditionalPayment.getText())<0) {
+		if(Double.parseDouble(AdditionalPayment.getText().trim())<0) {
 			contentText.append("Additional Payment must be greater than or equal to 0. \n");
 			goodtogo=false;
 		}

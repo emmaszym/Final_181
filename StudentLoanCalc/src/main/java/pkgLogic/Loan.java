@@ -39,13 +39,13 @@ public class Loan {
 		double RemainingBalance = LoanAmount;
 		int PaymentCnt = 1;
 		while(RemainingBalance >= this.GetPMT()+this.AdditionalPayment) {
-			InterestRate=this.getInterestRate(PaymentCnt);
-			Payment payment=new Payment(RemainingBalance, PaymentCnt++, this.StartDate, null, bCompoundingOption);
+			InterestRate=this.getInterestRate();
+			Payment payment=new Payment(RemainingBalance, PaymentCnt++, this.StartDate, this, bCompoundingOption);
 			RemainingBalance=payment.getEndingBalance();
 			startDate=startDate.plusMonths(1);
 			loanPayments.add(payment);
 		}
-		Payment payment=new Payment(RemainingBalance, PaymentCnt++, this.StartDate, null, bCompoundingOption);
+		Payment payment=new Payment(RemainingBalance, PaymentCnt++, this.StartDate, this, bCompoundingOption);
 		loanPayments.add(payment);
 		
 		

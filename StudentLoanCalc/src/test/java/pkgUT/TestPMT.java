@@ -67,6 +67,8 @@ public class TestPMT {
 		Loan loan2 = new Loan(dLoanAmount, dInterestRate, iNbrOfYears, localDate, 0, dEscrow);
 		
 		assertTrue(loan.getLoanPayments().size()==119);
+		
+		
 		assertEquals(loan.getTotalPayments(),69291.85,0.01);
 		assertEquals(loan.getTotalInterest(),19291.85,0.01);
 		assertEquals(loan2.getTotalInterest()-loan.getTotalInterest(),23744.02,0.01);
